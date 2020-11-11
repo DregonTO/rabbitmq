@@ -4,3 +4,11 @@ spring:
     port: 5672
     username: admin
     password: admin
+    #ACK模式
+    listener:
+      simple:
+        #acknowledge-mode: NONE rabbit的自动确认
+        acknowledge-mode: AUTO  #rabbitmq的手动确认, springboot会自动发送确认回执 (默认)
+        # acknowledge-mode: MANUL   rabbitmq的手动确认，springboot不发送回执, 必须自己编码发送回执
+        # chanel.basicQos(1)
+        prefetch: 1
